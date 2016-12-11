@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec  7 15:45:38 2016 Thibaut Cornolti
-** Last update Sun Dec 11 19:25:12 2016 Thibaut Cornolti
+** Last update Sun Dec 11 23:29:47 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -69,6 +69,8 @@ static void	init_box(t_game *g)
 void		check_map(t_game *g)
 {
   init_box(g);
+  if (g->player.x <= 0 || g->player.y <= 0)
+    my_soko_exit_r("Erreur : Map invalide. (joueur)");
   rec_check_map(g, g->player.x, g->player.y);
   repair_dot(g);
 }

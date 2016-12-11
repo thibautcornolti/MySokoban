@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:15:10 2016 Thibaut Cornolti
-** Last update Sat Dec 10 18:20:57 2016 Thibaut Cornolti
+** Last update Sun Dec 11 21:17:29 2016 Thibaut Cornolti
 */
 
 #include <ncurses.h>

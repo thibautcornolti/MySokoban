@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 18:18:07 2016 Thibaut Cornolti
-** Last update Sun Dec 11 19:27:13 2016 Thibaut Cornolti
+** Last update Mon Dec 12 14:01:06 2016 Thibaut Cornolti
 */
 
 #include "soko.h"

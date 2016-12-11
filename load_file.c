@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:14:40 2016 Thibaut Cornolti
-** Last update Wed Dec  7 18:13:03 2016 Thibaut Cornolti
+** Last update Mon Dec 12 14:00:00 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -22,7 +22,7 @@ static int	get_file_size(char *path)
   while (read(fd, &b, 1) != 0)
     size += 1;
   close(fd);
-  return (size);
+  return (size + 10);
 }
 
 static void	fill_map(t_game *g, int fd_file)
@@ -70,4 +70,6 @@ void		load_file(char *path, t_game *g)
       my_soko_exit();
   fill_map(g, fd);
   close(fd);
+  if (g->width <= 1 || g->height <= 1)
+    my_soko_exit_r("Erreur : Map invalide. (fichier illisible)\n");
 }
