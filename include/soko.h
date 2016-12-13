@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:15:10 2016 Thibaut Cornolti
-** Last update Sun Dec 11 21:17:29 2016 Thibaut Cornolti
+** Last update Tue Dec 13 13:20:25 2016 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -49,6 +49,7 @@ int     get_box_at_pos(t_game *, int, int);
 void	check_map(t_game *);
 void	restart(t_game *);
 void	stop_game();
+void	stop_game_r(int);
 void	start_game(t_game *);
 int	start_js_game(t_game *);
 int	check_game(t_game *);

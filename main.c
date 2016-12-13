@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 10:05:11 2016 Thibaut Cornolti
-** Last update Sun Dec 11 21:16:43 2016 Thibaut Cornolti
+** Last update Tue Dec 13 13:20:48 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -18,6 +18,12 @@ static void	my_initscr()
   curs_set(0);
   keypad(stdscr, TRUE);
   nodelay(stdscr, TRUE);
+}
+
+void		stop_game_r(int value)
+{
+  endwin();
+  exit(value);
 }
 
 void		stop_game()

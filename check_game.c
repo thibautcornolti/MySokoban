@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 18:18:07 2016 Thibaut Cornolti
-** Last update Mon Dec 12 14:01:06 2016 Thibaut Cornolti
+** Last update Tue Dec 13 13:20:07 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -54,8 +54,10 @@ int		check_game(t_game *g)
 	else if (pos_is_box(g, j, i))
 	  kobox += check_box(g, j, i) + 0 * (box += 1);
     }
-  if (ko == 0 || kobox == box)
-    stop_game();
+  if (ko == 0)
+    stop_game_r(0);
+  if (kobox == box)
+    stop_game_r(1);
   return (1);
 }
 
