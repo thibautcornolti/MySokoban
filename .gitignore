@@ -1,6 +1,7 @@
 my_sokoban
+bonus/my_sokoban
 *~
 #*#
 maps/*
-bonus/*
+bonus/maps/*
 lol

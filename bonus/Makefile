@@ -5,17 +5,25 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Dec 14 14:15:16 2016 Thibaut Cornolti
+## Last update Wed Dec 14 14:23:57 2016 Thibaut Cornolti
 ##
 SRC	=	main.c			\
 		load_file.c		\
 		utils.c			\
 		game.c			\
+		menu.c			\
+		menu_utils.c		\
 		move.c			\
 		fct.c			\
 		check.c			\
 		check_game.c		\
 		js.c			\
+		editor.c		\
+		editor_utils.c		\
+		choice_map.c		\
+		choice_map_2.c		\
+		choice_editor.c		\
+		animation.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 
