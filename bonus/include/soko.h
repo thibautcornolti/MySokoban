@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:15:10 2016 Thibaut Cornolti
-** Last update Sat Dec 17 17:24:33 2016 Thibaut Cornolti
+** Last update Sat Dec 17 19:06:08 2016 Thibaut Cornolti
 */
 
 #ifndef SOKO_H_
@@ -89,6 +89,7 @@ int			get_box_at_pos(t_game *, int, int);
 void			check_map(t_game *);
 void			restart(t_game *);
 void			stop_game(t_game *);
+void			init_var(t_game *, t_menu *);
 void			start_game(t_game *);
 void			start_menu(t_game *, char *, t_menu *);
 void			start_editor(t_game *);

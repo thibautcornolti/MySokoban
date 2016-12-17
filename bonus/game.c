@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 17:34:00 2016 Thibaut Cornolti
-** Last update Sat Dec 17 17:31:45 2016 Thibaut Cornolti
+** Last update Sat Dec 17 19:03:18 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -40,29 +40,12 @@ void		show_title(t_game *game)
   attroff(A_BOLD);
 }
 
-static void	show_info(t_game *g)
-{
-  unsigned long	t;
-
-  t = time(NULL) - g->time;
-  mvprintw(LINES - 1, COLS / 2 - 15,
-	   "Moves: %ld | Pushes: %ld | Time: %lus",
-	   g->move, g->box_move, t);
-}
-
-void		refresh_screen(t_game *g)
+static void	show_map(t_game *g)
 {
   int		i;
   int		j;
 
-  clear();
-  if ((i = -1) * 0 || COLS <= g->width || LINES <= g->height)
-    {
-      mvprintw(LINES / 2, COLS / 2 - 10, "ENLARGE THE TERMINAL");
-      refresh();
-      return ;
-    }
-  show_title(g);
+  i = -1;
   while (1 + 0 * (j = -1) && g->map[++i])
     {
       move(LINES / 2 + i - g->height / 2, COLS / 2 - g->width / 2);
@@ -75,9 +58,26 @@ void		refresh_screen(t_game *g)
 	  printw("X");
 	else
 	  printw("%c", g->map[i][j]);
-      printw("\n");
     }
-  show_info(g);
+}
+
+void		refresh_screen(t_game *g)
+{
+  unsigned long	t;
+
+  clear();
+  if (COLS <= g->width || LINES <= g->height)
+    {
+      mvprintw(LINES / 2, COLS / 2 - 10, "ENLARGE THE TERMINAL");
+      refresh();
+      return ;
+    }
+  show_title(g);
+  show_map(g);
+  t = time(NULL) - g->time;
+  mvprintw(LINES - 1, COLS / 2 - 15,
+	   "Moves: %ld | Pushes: %ld | Time: %lus",
+	   g->move, g->box_move, t);
   refresh();
 }
 
@@ -106,8 +106,7 @@ static void	init_game(t_game *game)
     my_soko_menu_r(game, "Error : Too few or too many player.\n");
   check_map(game);
   go_anim(game);
-  game->packet.box = game->box[0];
-  game->packet.i = 0;
+  game->packet.box = game->box[game->packet.i = 0];
   refresh_screen(game);
 }
 
@@ -120,9 +119,8 @@ void		start_game(t_game *game)
   start_server(game);
   start_music(game);
   timeout(100);
-  while (1)
+  while ((ch = getch()))
     {
-      ch = getch();
       if (move_player(game, ch));
       else if (ch == 'q')
 	stop_game(game);

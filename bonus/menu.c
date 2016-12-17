@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 21:02:41 2016 Thibaut Cornolti
-** Last update Sat Dec 17 16:01:57 2016 Thibaut Cornolti
+** Last update Sat Dec 17 19:05:53 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -91,22 +91,16 @@ void		start_menu(t_game *g, char *msg, t_menu *menu)
   int		ch;
 
   stop_music(g);
+  init_var(g, &m);
   if (menu != NULL)
     m = *menu;
-  else{
-    m.start = 1;
-    m.connect = 0;
-    m.editor = 0;
-    m.exit = 0;
-  }
   refresh_menu(g, &m, msg);
   timeout(500);
-  while (1)
+  while ((ch = getch()))
     {
-      ch = getch();
       if (ch == 'q')
 	stop_game(g);
-      if (ch == '\n' || ch == ' ')
+      else if (ch == '\n' || ch == ' ')
 	choice_item(g, &m);
       else
 	move_item(g, &m, ch);

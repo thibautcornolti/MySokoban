@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 10:05:11 2016 Thibaut Cornolti
-** Last update Sat Dec 17 17:27:45 2016 Thibaut Cornolti
+** Last update Sat Dec 17 19:06:16 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -41,15 +41,25 @@ void		restart(t_game *g)
   start_game(g);
 }
 
-static void	init_game(t_game *g)
+void		init_var(t_game *g, t_menu *m)
 {
-  g->height = 0;
-  g->width = 0;
-  g->ip = NULL;
-  g->splayer.x = -1;
-  g->splayer.y = -1;
-  g->server = 1;
-  g->f_music = NULL;
+  if (g != NULL)
+    {
+      g->height = 0;
+      g->width = 0;
+      g->ip = NULL;
+      g->splayer.x = -1;
+      g->splayer.y = -1;
+      g->server = 1;
+      g->f_music = NULL;
+    }
+  if (m != NULL)
+    {
+      m->start = 1;
+      m->connect = 0;
+      m->editor = 0;
+      m->exit = 0;
+    }
 }
 
 int		main(int ac, char **av)
@@ -70,7 +80,7 @@ int		main(int ac, char **av)
 			  FMOD_CREATESAMPLE, NULL, &(game.f_check));
   ac += 1;
   game.filepath = av[1];
-  init_game(&game);
+  init_var(&game, NULL);
   my_initscr();
   start_animation();
   start_menu(&game, NULL, NULL);
