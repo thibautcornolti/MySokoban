@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 17:34:00 2016 Thibaut Cornolti
-** Last update Fri Dec 16 23:21:57 2016 Thibaut Cornolti
+** Last update Sat Dec 17 17:31:45 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -69,6 +69,8 @@ void		refresh_screen(t_game *g)
       while (g->map[i][++j])
 	if (i == g->player.y && j == g->player.x)
 	  printw("P");
+	else if (i == g->splayer.y && j == g->splayer.x)
+	  printw("S");
 	else if (pos_is_box(g, j, i))
 	  printw("X");
 	else
@@ -104,6 +106,8 @@ static void	init_game(t_game *game)
     my_soko_menu_r(game, "Error : Too few or too many player.\n");
   check_map(game);
   go_anim(game);
+  game->packet.box = game->box[0];
+  game->packet.i = 0;
   refresh_screen(game);
 }
 
@@ -113,6 +117,7 @@ void		start_game(t_game *game)
 
   load_file(game->filepath, game);
   init_game(game);
+  start_server(game);
   start_music(game);
   timeout(100);
   while (1)
@@ -130,6 +135,7 @@ void		start_game(t_game *game)
 	start_menu(game, NULL, NULL);
       else if (ch == 32)
 	restart(game);
+      update_server(game);
       refresh_screen(game);
       check_game(game);
     }

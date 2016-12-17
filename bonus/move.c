@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec  7 11:24:11 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:49:03 2016 Thibaut Cornolti
+** Last update Sat Dec 17 17:42:30 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -28,6 +28,8 @@ static int	move_box_2(t_game *g, int x, int y, int move)
       !pos_is_box(g, x, y - 1))
     {
       g->box[get_box_at_pos(g, x, y)].y -= 1;
+      g->packet.box = g->box[get_box_at_pos(g, x, y - 1)];
+      g->packet.i = get_box_at_pos(g, x, y - 1);
       g->box_move += 1;
       return (1);
     }
@@ -35,6 +37,8 @@ static int	move_box_2(t_game *g, int x, int y, int move)
 	   !pos_is_box(g, x, y + 1))
     {
       g->box[get_box_at_pos(g, x, y)].y += 1;
+      g->packet.box = g->box[get_box_at_pos(g, x, y + 1)];
+      g->packet.i = get_box_at_pos(g, x, y + 1);
       g->box_move += 1;
       return (1);
     }
@@ -49,6 +53,8 @@ int		move_box(t_game *g, int x, int y, int move)
       !pos_is_box(g, x + 1, y))
     {
       g->box[get_box_at_pos(g, x, y)].x += 1;
+      g->packet.box = g->box[get_box_at_pos(g, x + 1, y)];
+      g->packet.i = get_box_at_pos(g, x + 1, y);
       g->box_move += 1;
       return (1);
     }
@@ -56,6 +62,8 @@ int		move_box(t_game *g, int x, int y, int move)
 	   !pos_is_box(g, x - 1, y))
     {
       g->box[get_box_at_pos(g, x, y)].x -= 1;
+      g->packet.box = g->box[get_box_at_pos(g, x - 1, y)];
+      g->packet.i = get_box_at_pos(g, x - 1, y);
       g->box_move += 1;
       return (1);
     }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Dec 16 23:10:51 2016 Thibaut Cornolti
-** Last update Sat Dec 17 00:24:13 2016 Thibaut Cornolti
+** Last update Sat Dec 17 15:48:11 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -26,6 +26,7 @@ void		stop_music(t_game *g)
 {
   if (g->f_music != NULL)
     FMOD_Sound_Release(g->f_music);
+  g->f_music = NULL;
 }
 
 void		start_music(t_game *g)
@@ -39,8 +40,7 @@ void		start_music(t_game *g)
   path[2] = my_strdup("sounds/m3.mp3");
   path[3] = my_strdup("sounds/m4.mp3");
   path[4] = my_strdup("sounds/m5.mp3");
-  if (g->f_music != NULL)
-    FMOD_Sound_Release(g->f_music);
+  stop_music(g);
   FMOD_System_CreateSound(g->f_sys, path[rand() % 4],
 			  FMOD_2D | FMOD_CREATESTREAM,
 			  NULL, &(g->f_music));
