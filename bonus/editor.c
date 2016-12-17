@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Dec 12 14:35:41 2016 Thibaut Cornolti
-** Last update Wed Dec 14 13:36:11 2016 Thibaut Cornolti
+** Last update Fri Dec 16 22:23:48 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -40,7 +40,7 @@ void		start_editor(t_game *g)
     {
       ch = getch();
       if (ch == 'q')
-	stop_game();
+	stop_game(g);
       else if (ch == 27)
 	start_menu(g, NULL, NULL);
       else if (ch == KEY_UP && g->player.y > 0)

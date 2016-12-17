@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 18:18:07 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:49:43 2016 Thibaut Cornolti
+** Last update Sat Dec 17 00:03:11 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -36,11 +36,13 @@ static void	check_ko(t_game *g, int ko, int kobox, int box)
 {
   if (ko == 0)
     {
+      stop_music(g);
       winner_anim(g);
       my_soko_menu_r(g, "WINNER!!");
     }
   if (kobox == box)
     {
+      stop_music(g);
       looser_anim(g);
       my_soko_menu_r(g, "Game Over!");
     }

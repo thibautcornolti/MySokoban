@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 23:36:13 2016 Thibaut Cornolti
-** Last update Wed Dec 14 14:14:52 2016 Thibaut Cornolti
+** Last update Fri Dec 16 23:31:19 2016 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -111,13 +111,13 @@ void		choice_editor(t_game *g, char *p)
     {
       ch = getch();
       if (ch == 'q')
-	stop_game();
+	stop_game(g);
       else if (ch == '\n' || ch == ' ')
 	choice_folder(g, path, &sel);
       else if (ch == 27)
 	start_menu(g, NULL, NULL);
       else
-	move_folder(&sel, ch, path);
+	move_folder(g, &sel, ch, path);
       if (ch != -1)
 	refresh_folder(g, path, &sel);
     }

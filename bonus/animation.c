@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec 14 14:20:30 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:50:51 2016 Thibaut Cornolti
+** Last update Sat Dec 17 00:34:10 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -37,6 +37,8 @@ void		looser_anim(t_game *g)
   char		b;
   int		i;
 
+  FMOD_System_PlaySound(g->f_sys, g->f_lose, NULL, 0, NULL);
+  FMOD_System_Update(g->f_sys);
   if (COLS < 81)
     return ;
   clear();
@@ -55,7 +57,7 @@ void		looser_anim(t_game *g)
   attroff(COLOR_PAIR(1));
   attroff(A_BOLD);
   refresh();
-  usleep(1000000);
+  usleep(4000000);
 }
 
 void		winner_anim(t_game *g)
@@ -64,6 +66,8 @@ void		winner_anim(t_game *g)
   char		b;
   int		i;
 
+  FMOD_System_PlaySound(g->f_sys, g->f_win, NULL, 0, NULL);
+  FMOD_System_Update(g->f_sys);
   if (COLS < 63)
     return ;
   clear();
@@ -73,8 +77,7 @@ void		winner_anim(t_game *g)
   attron(COLOR_PAIR(4));
   if ((fd = open("winner.txt", O_RDONLY)) == -1)
     return ;
-  i = LINES / 2 - 3;
-  move(i, COLS / 2 - 30);
+  move((i = LINES / 2 - 3), COLS / 2 - 30);
   while (read(fd, &b, 1) != 0)
     if (b == '\n')
       move(++i, COLS / 2 - 30);
@@ -83,7 +86,7 @@ void		winner_anim(t_game *g)
   attroff(COLOR_PAIR(4));
   attroff(A_BOLD);
   refresh();
-  usleep(1000000);
+  usleep(6000000);
 }
 
 void		go_anim(t_game *g)

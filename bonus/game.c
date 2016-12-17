@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 17:34:00 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:48:39 2016 Thibaut Cornolti
+** Last update Fri Dec 16 23:21:57 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -113,17 +113,18 @@ void		start_game(t_game *game)
 
   load_file(game->filepath, game);
   init_game(game);
+  start_music(game);
   timeout(100);
   while (1)
     {
       ch = getch();
       if (move_player(game, ch));
       else if (ch == 'q')
-	stop_game();
+	stop_game(game);
       else if (ch == 'j')
 	{
 	  if (start_js_game(game) == -42)
-	    stop_game();
+	    stop_game(game);
 	}
       else if (ch == 27)
 	start_menu(game, NULL, NULL);

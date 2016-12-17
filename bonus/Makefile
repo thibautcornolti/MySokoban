@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Dec 14 14:23:57 2016 Thibaut Cornolti
+## Last update Fri Dec 16 23:16:53 2016 Thibaut Cornolti
 ##
 SRC	=	main.c			\
 		load_file.c		\
@@ -24,6 +24,7 @@ SRC	=	main.c			\
 		choice_map_2.c		\
 		choice_editor.c		\
 		animation.c		\
+		music.c
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -37,7 +38,7 @@ RM	=	rm -f
 
 LIB_P	=	-Llib/my
 
-LIB	=	-lmy -lncurses
+LIB	=	-lmy -lncurses -lm -lfmodL
 
 all:	$(NAME)
 

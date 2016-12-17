@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sat Dec 10 02:51:03 2016 Thibaut Cornolti
-** Last update Wed Dec 14 14:13:24 2016 Thibaut Cornolti
+** Last update Fri Dec 16 22:15:43 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -15,7 +15,7 @@ static int	init_js_game(int *cx, int *cy, t_js_data *js)
   int		fd;
 
   if ((fd = open("/dev/input/js0", O_RDONLY)) == -1)
-    my_soko_exit_r("Error: Incompatibility.");
+    my_soko_exit_r(NULL, "Error: Incompatibility.");
   read(fd, js, sizeof(*js));
   *cx = js->x;
   *cy = js->y;

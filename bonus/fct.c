@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec  7 11:30:10 2016 Thibaut Cornolti
-** Last update Wed Dec 14 14:49:00 2016 Thibaut Cornolti
+** Last update Sat Dec 17 00:20:49 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -19,6 +19,8 @@ void	fct_move_right(t_game *g)
   y = &(g->player.y);
   if (g->map[*y][*x + 1] != '#' && move_box(g, *x + 1, *y, 0))
     {
+      FMOD_System_PlaySound(g->f_sys, g->f_move, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
       *x += 1;
       g->move += 1;
     }
@@ -33,6 +35,8 @@ void	fct_move_left(t_game *g)
   y = &(g->player.y);
   if (g->map[*y][*x - 1] != '#' && move_box(g, *x - 1, *y, 1))
     {
+      FMOD_System_PlaySound(g->f_sys, g->f_move, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
       *x -= 1;
       g->move += 1;
     }
@@ -47,6 +51,8 @@ void	fct_move_up(t_game *g)
   y = &(g->player.y);
   if (g->map[*y - 1][*x] != '#' && move_box(g, *x, *y - 1, 2))
     {
+      FMOD_System_PlaySound(g->f_sys, g->f_move, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
       *y -= 1;
       g->move += 1;
     }
@@ -61,6 +67,8 @@ void	fct_move_down(t_game *g)
   y = &(g->player.y);
   if (g->map[*y + 1][*x] != '#' && move_box(g, *x, *y + 1, 3))
     {
+      FMOD_System_PlaySound(g->f_sys, g->f_move, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
       *y += 1;
       g->move += 1;
     }

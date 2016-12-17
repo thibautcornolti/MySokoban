@@ -5,39 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 17:34:00 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:52:13 2016 Thibaut Cornolti
+** Last update Sat Dec 17 02:01:58 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
-
-static void	show_title(t_game *game)
-{
-  int		fd;
-  char		b;
-  int		i;
-
-  start_color();
-  if (COLS < 52)
-    return ;
-  if ((fd = open("title.txt", O_RDONLY)) == -1)
-    return ;
-  attron(A_BOLD);
-  init_pair(1, COLOR_RED, COLOR_BLACK);
-  attron(COLOR_PAIR(1));
-  if (9 > LINES / 2 - game->height / 2)
-    return ;
-  move(i = 2, COLS / 2 - 26);
-  while (read(fd, &b, 1) != 0)
-    {
-      if (b == '\n')
-	move(++i, COLS / 2 - 26);
-      else
-	printw("%c", b);
-    }
-  attroff(COLOR_PAIR(1));
-  attroff(A_BOLD);
-  close(fd);
-}
 
 void		refresh_screen(t_game *game)
 {
@@ -51,11 +22,9 @@ void		refresh_screen(t_game *game)
       refresh();
       return ;
     }
-  show_title(game);
   while (1 + 0 * (j = -1) && game->map[++i])
     {
-      move(LINES / 2 + i - game->height / 2,
-	   COLS / 2 - game->width / 2);
+      move(i, 0);
       while (game->map[i][++j])
 	if (i == game->player.y && j == game->player.x)
 	  printw("P");

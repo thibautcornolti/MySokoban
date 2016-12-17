@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:14:40 2016 Thibaut Cornolti
-** Last update Wed Dec 14 14:09:38 2016 Thibaut Cornolti
+** Last update Fri Dec 16 22:15:02 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -67,7 +67,7 @@ void		load_file(char *path, t_game *g)
     my_soko_menu_r(g, "Error: Insufficient memory.\n");
   while (++i < size)
     if ((g->map[i] = malloc(sizeof(char) * size)) == NULL)
-      my_soko_exit();
+      my_soko_exit(NULL);
   fill_map(g, fd);
   close(fd);
   if (g->width <= 1 || g->height <= 1)

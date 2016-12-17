@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:34:08 2016 Thibaut Cornolti
-** Last update Mon Dec 12 13:06:47 2016 Thibaut Cornolti
+** Last update Fri Dec 16 22:54:14 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -38,15 +38,33 @@ void		my_soko_menu_r(t_game *g, char *msg)
   start_menu(g, msg, NULL);
 }
 
-void		my_soko_exit_r(char *str)
+void		my_soko_exit_r(t_game *g, char *str)
 {
+  if (g != NULL)
+    {
+      FMOD_Sound_Release(g->f_move);
+      FMOD_Sound_Release(g->f_win);
+      FMOD_Sound_Release(g->f_lose);
+      FMOD_Sound_Release(g->f_check);
+      FMOD_System_Close(g->f_sys);
+      FMOD_System_Release(g->f_sys);
+    }
   endwin();
   my_puterror(str);
   exit(84);
 }
 
-void		my_soko_exit()
+void		my_soko_exit(t_game *g)
 {
+  if (g != NULL)
+    {
+      FMOD_Sound_Release(g->f_move);
+      FMOD_Sound_Release(g->f_win);
+      FMOD_Sound_Release(g->f_lose);
+      FMOD_Sound_Release(g->f_check);
+      FMOD_System_Close(g->f_sys);
+      FMOD_System_Release(g->f_sys);
+    }
   endwin();
   my_puterror("Error.\n");
   exit(84);

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 23:36:13 2016 Thibaut Cornolti
-** Last update Tue Dec 13 19:23:57 2016 Thibaut Cornolti
+** Last update Sat Dec 17 00:20:36 2016 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -75,12 +75,20 @@ static void	choice_folder(t_game *g, char *path, int *sel)
     }
 }
 
-void		move_folder(int *sel, int ch, char *path)
+void		move_folder(t_game *g, int *sel, int ch, char *path)
 {
   if (ch == KEY_UP && *sel > 0)
-    *sel -= 1;
+    {
+      FMOD_System_PlaySound(g->f_sys, g->f_check, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
+      *sel -= 1;
+    }
   else if (ch == KEY_DOWN && *sel < folder_len(path))
-    *sel += 1;
+    {
+      FMOD_System_PlaySound(g->f_sys, g->f_check, NULL, 0, NULL);
+      FMOD_System_Update(g->f_sys);
+      *sel += 1;
+    }
 }
 
 void		choice_map(t_game *g, char *p)
@@ -99,13 +107,13 @@ void		choice_map(t_game *g, char *p)
     {
       ch = getch();
       if (ch == 'q')
-	stop_game();
+	stop_game(g);
       else if (ch == '\n' || ch == ' ')
 	choice_folder(g, path, &sel);
       else if (ch == 27)
 	start_menu(g, NULL, NULL);
       else
-	move_folder(&sel, ch, path);
+	move_folder(g, &sel, ch, path);
       if (ch != -1)
 	refresh_folder(g, path, &sel);
     }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 10:05:11 2016 Thibaut Cornolti
-** Last update Wed Dec 14 15:29:23 2016 Thibaut Cornolti
+** Last update Sat Dec 17 00:35:19 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -20,8 +20,17 @@ static void	my_initscr()
   nodelay(stdscr, TRUE);
 }
 
-void		stop_game()
+void		stop_game(t_game *g)
 {
+  if (g != NULL)
+    {
+      FMOD_Sound_Release(g->f_move);
+      FMOD_Sound_Release(g->f_win);
+      FMOD_Sound_Release(g->f_lose);
+      FMOD_Sound_Release(g->f_check);
+      FMOD_System_Close(g->f_sys);
+      FMOD_System_Release(g->f_sys);
+    }
   endwin();
   exit(0);
 }
@@ -36,6 +45,18 @@ int		main(int ac, char **av)
 {
   t_game	game;
 
+  FMOD_System_Create(&(game.f_sys));
+  FMOD_System_Init(game.f_sys, 32, FMOD_INIT_NORMAL, NULL);
+  FMOD_System_Update(game.f_sys);
+  FMOD_System_CreateChannelGroup(game.f_sys, "zic", &(game.f_gmusic));
+  FMOD_System_CreateSound(game.f_sys, "sounds/cut.mp3",
+			  FMOD_CREATESAMPLE, NULL, &(game.f_move));
+  FMOD_System_CreateSound(game.f_sys, "sounds/lose.mp3",
+			  FMOD_CREATESAMPLE, NULL, &(game.f_lose));
+  FMOD_System_CreateSound(game.f_sys, "sounds/win.mp3",
+			  FMOD_CREATESAMPLE, NULL, &(game.f_win));
+  FMOD_System_CreateSound(game.f_sys, "sounds/check.mp3",
+			  FMOD_CREATESAMPLE, NULL, &(game.f_check));
   ac += 1;
   game.height = 0;
   game.width = 0;
