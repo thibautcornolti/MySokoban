@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sun Dec 11 21:02:41 2016 Thibaut Cornolti
-** Last update Sat Dec 17 19:05:53 2016 Thibaut Cornolti
+** Last update Mon Dec 19 00:17:57 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -91,6 +91,7 @@ void		start_menu(t_game *g, char *msg, t_menu *menu)
   int		ch;
 
   stop_music(g);
+  start_music_menu(g);
   init_var(g, &m);
   if (menu != NULL)
     m = *menu;

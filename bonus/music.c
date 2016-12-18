@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Dec 16 23:10:51 2016 Thibaut Cornolti
-** Last update Sat Dec 17 15:48:11 2016 Thibaut Cornolti
+** Last update Sun Dec 18 18:43:47 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -24,6 +24,7 @@ void		pause_music(t_game *g)
 
 void		stop_music(t_game *g)
 {
+  FMOD_ChannelGroup_Stop(g->f_gmusic);
   if (g->f_music != NULL)
     FMOD_Sound_Release(g->f_music);
   g->f_music = NULL;
@@ -46,5 +47,16 @@ void		start_music(t_game *g)
 			  NULL, &(g->f_music));
   FMOD_System_PlaySound(g->f_sys, g->f_music, g->f_gmusic, 0, NULL);
   FMOD_Sound_SetLoopCount(g->f_music, -1);
+  FMOD_System_Update(g->f_sys);
+}
+
+void		start_music_menu(t_game *g)
+{
+  stop_music(g);
+  FMOD_System_CreateSound(g->f_sys, "sounds/menu.mp3",
+			  FMOD_2D | FMOD_CREATESTREAM,
+			  NULL, &(g->f_music));
+  FMOD_System_PlaySound(g->f_sys, g->f_music, g->f_gmusic, 0, NULL);
+  FMOD_Sound_SetLoopCount(g->f_music, 42);
   FMOD_System_Update(g->f_sys);
 }

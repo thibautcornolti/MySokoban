@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 16:15:10 2016 Thibaut Cornolti
-** Last update Sat Dec 17 19:06:08 2016 Thibaut Cornolti
+** Last update Sun Dec 18 18:30:42 2016 Thibaut Cornolti
 */
 
 #ifndef SOKO_H_
@@ -78,6 +78,7 @@ typedef struct		s_menu
 }			t_menu;
 
 void			start_music(t_game *);
+void			start_music_menu(t_game *);
 void			start_server(t_game *);
 void			update_server(t_game *);
 void			stop_music(t_game *);
