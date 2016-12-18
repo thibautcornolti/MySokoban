@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sat Dec 17 14:55:33 2016 Thibaut Cornolti
-** Last update Sun Dec 18 17:39:42 2016 Thibaut Cornolti
+** Last update Sun Dec 18 17:49:06 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -55,8 +55,7 @@ static void	update_box(t_game *g)
       if (g->packet.i >= 0)
 	g->box[g->packet.i] = g->packet.box;
       if (sfTcpSocket_send(g->socket, g->box,
-			   sizeof(g->box) * get_box_len(g))
-	  == sfSocketError)
+			   sizeof(g->box) * get_box_len(g)) == sfSocketError)
 	start_menu(g, "Connection timeout", NULL);
     }
 }
@@ -88,7 +87,8 @@ void		start_server(t_game *g)
   g->listener = sfTcpListener_create();
   if (sfTcpListener_listen(g->listener, 51508) != sfSocketDone)
     start_menu(g, "Connection refused", NULL);
-  if (sfTcpListener_accept(g->listener, &(g->socket)) == sfSocketError)
+  if (sfTcpListener_accept(g->listener,
+			   &(g->socket)) == sfSocketError)
     start_menu(g, "Connection refused", NULL);
   size = my_strlen(g->filepath);
   if (sfTcpSocket_send(g->socket, &size,
