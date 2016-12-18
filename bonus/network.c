@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Sat Dec 17 12:43:29 2016 Thibaut Cornolti
-** Last update Sat Dec 17 17:30:03 2016 Thibaut Cornolti
+** Last update Sun Dec 18 17:05:01 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -47,17 +47,17 @@ static void	connect(t_game *g)
   t.microseconds = 3000;
   g->socket = sfTcpSocket_create();
   g->status = sfTcpSocket_connect(g->socket, ip, 51508, t);
-  if (g->status != sfSocketDone)
+  if (g->status == sfSocketError)
     choice_connect(g, "Connection refused");
   g->server = 0;
   if (sfTcpSocket_receive(g->socket, &size,
 			  sizeof(sfUint8),
-			  &received) != sfSocketDone)
+			  &received) == sfSocketError)
     start_menu(g, "Connection timeout", NULL);
   g->filepath = malloc(sizeof(char) * size);
   if (sfTcpSocket_receive(g->socket, g->filepath,
 			  size,
-			  &received) != sfSocketDone)
+			  &received) == sfSocketError)
     start_menu(g, "Connection timeout2", NULL);
   start_game(g);
 }
