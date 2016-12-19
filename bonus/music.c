@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Dec 16 23:10:51 2016 Thibaut Cornolti
-** Last update Sun Dec 18 18:43:47 2016 Thibaut Cornolti
+** Last update Mon Dec 19 21:34:01 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -48,6 +48,8 @@ void		start_music(t_game *g)
   FMOD_System_PlaySound(g->f_sys, g->f_music, g->f_gmusic, 0, NULL);
   FMOD_Sound_SetLoopCount(g->f_music, -1);
   FMOD_System_Update(g->f_sys);
+  clear();
+  refresh();
 }
 
 void		start_music_menu(t_game *g)
@@ -59,4 +61,6 @@ void		start_music_menu(t_game *g)
   FMOD_System_PlaySound(g->f_sys, g->f_music, g->f_gmusic, 0, NULL);
   FMOD_Sound_SetLoopCount(g->f_music, 42);
   FMOD_System_Update(g->f_sys);
+  clear();
+  refresh();
 }

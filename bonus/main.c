@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 10:05:11 2016 Thibaut Cornolti
-** Last update Sun Dec 18 18:26:13 2016 Thibaut Cornolti
+** Last update Mon Dec 19 21:32:16 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -66,6 +66,7 @@ int		main(int ac, char **av)
 {
   t_game	game;
 
+  my_initscr();
   FMOD_System_Create(&(game.f_sys));
   FMOD_System_Init(game.f_sys, 32, FMOD_INIT_NORMAL, NULL);
   FMOD_System_Update(game.f_sys);
@@ -78,10 +79,11 @@ int		main(int ac, char **av)
 			  FMOD_CREATESAMPLE, NULL, &(game.f_win));
   FMOD_System_CreateSound(game.f_sys, "sounds/check.mp3",
 			  FMOD_CREATESAMPLE, NULL, &(game.f_check));
+  clear();
+  refresh();
   ac += 1;
   game.filepath = av[1];
   init_var(&game, NULL);
-  my_initscr();
   start_animation();
   start_menu(&game, NULL, NULL);
   endwin();
