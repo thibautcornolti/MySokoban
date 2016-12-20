@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec 14 14:20:30 2016 Thibaut Cornolti
-** Last update Sat Dec 17 00:34:10 2016 Thibaut Cornolti
+** Last update Tue Dec 20 14:51:08 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -17,7 +17,7 @@ static void	show_ti(int x)
   int		i;
 
   clear();
-  if ((fd = open("title.txt", O_RDONLY)) == -1)
+  if ((fd = open("resources/title.txt", O_RDONLY)) == -1)
     return ;
   i = x;
   move(i, COLS / 2 - 26);
@@ -45,7 +45,7 @@ void		looser_anim(t_game *g)
   show_title(g);
   attron(A_BOLD);
   attron(COLOR_PAIR(1));
-  if ((fd = open("looser.txt", O_RDONLY)) == -1)
+  if ((fd = open("resourceslooser.txt", O_RDONLY)) == -1)
     return ;
   i = LINES / 2 - 3;
   move(i, COLS / 2 - 39);
@@ -75,7 +75,7 @@ void		winner_anim(t_game *g)
   attron(A_BOLD);
   init_pair(4, COLOR_GREEN, COLOR_BLACK);
   attron(COLOR_PAIR(4));
-  if ((fd = open("winner.txt", O_RDONLY)) == -1)
+  if ((fd = open("resources/winner.txt", O_RDONLY)) == -1)
     return ;
   move((i = LINES / 2 - 3), COLS / 2 - 30);
   while (read(fd, &b, 1) != 0)
@@ -102,7 +102,7 @@ void		go_anim(t_game *g)
   attron(A_BOLD);
   init_pair(4, COLOR_GREEN, COLOR_BLACK);
   attron(COLOR_PAIR(4));
-  if ((fd = open("go.txt", O_RDONLY)) == -1)
+  if ((fd = open("resources/go.txt", O_RDONLY)) == -1)
     return ;
   i = LINES / 2 - 3;
   move(i, COLS / 2 - 12);

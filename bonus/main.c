@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 10:05:11 2016 Thibaut Cornolti
-** Last update Mon Dec 19 21:32:16 2016 Thibaut Cornolti
+** Last update Tue Dec 20 14:51:59 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -71,13 +71,13 @@ int		main(int ac, char **av)
   FMOD_System_Init(game.f_sys, 32, FMOD_INIT_NORMAL, NULL);
   FMOD_System_Update(game.f_sys);
   FMOD_System_CreateChannelGroup(game.f_sys, "zic", &(game.f_gmusic));
-  FMOD_System_CreateSound(game.f_sys, "sounds/cut.mp3",
+  FMOD_System_CreateSound(game.f_sys, "resources/sounds/cut.mp3",
 			  FMOD_CREATESAMPLE, NULL, &(game.f_move));
-  FMOD_System_CreateSound(game.f_sys, "sounds/lose.mp3",
+  FMOD_System_CreateSound(game.f_sys, "resources/sounds/lose.mp3",
 			  FMOD_CREATESAMPLE, NULL, &(game.f_lose));
-  FMOD_System_CreateSound(game.f_sys, "sounds/win.mp3",
+  FMOD_System_CreateSound(game.f_sys, "resources/sounds/win.mp3",
 			  FMOD_CREATESAMPLE, NULL, &(game.f_win));
-  FMOD_System_CreateSound(game.f_sys, "sounds/check.mp3",
+  FMOD_System_CreateSound(game.f_sys, "resources/sounds/check.mp3",
 			  FMOD_CREATESAMPLE, NULL, &(game.f_check));
   clear();
   refresh();

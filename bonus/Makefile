@@ -5,29 +5,29 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Sun Dec 18 17:33:22 2016 Thibaut Cornolti
+## Last update Tue Dec 20 14:50:03 2016 Thibaut Cornolti
 ##
-SRC	=	main.c			\
-		load_file.c		\
-		utils.c			\
-		utils2.c		\
-		game.c			\
-		menu.c			\
-		menu_utils.c		\
-		move.c			\
-		fct.c			\
-		check.c			\
-		check_game.c		\
-		js.c			\
-		editor.c		\
-		editor_utils.c		\
-		choice_map.c		\
-		choice_map_2.c		\
-		choice_editor.c		\
-		animation.c		\
-		music.c			\
-		network.c		\
-		net_game.c		\
+SRC	=	main.c				\
+		utils/load_file.c		\
+		utils/utils.c			\
+		utils/utils2.c			\
+		game/game.c			\
+		menu/menu.c			\
+		menu/menu_utils.c		\
+		game/move.c			\
+		game/fct.c			\
+		check/check.c			\
+		check/check_game.c		\
+		misc/js.c			\
+		editor/editor.c			\
+		editor/editor_utils.c		\
+		manager/choice_map.c		\
+		manager/choice_map_2.c		\
+		manager/choice_editor.c		\
+		misc/animation.c		\
+		misc/music.c			\
+		network/network.c		\
+		network/net_game.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 
