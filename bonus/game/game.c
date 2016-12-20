@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Dec  6 17:34:00 2016 Thibaut Cornolti
-** Last update Sun Dec 18 18:33:33 2016 Thibaut Cornolti
+** Last update Tue Dec 20 14:52:59 2016 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -20,7 +20,7 @@ void		show_title(t_game *game)
   if (COLS < 52)
     return ;
   start_color();
-  if ((fd = open("title.txt", O_RDONLY)) == -1)
+  if ((fd = open("resources/title.txt", O_RDONLY)) == -1)
     return ;
   attron(A_BOLD);
   init_pair(1, COLOR_RED, COLOR_BLACK);
