@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Dec 14 14:20:30 2016 Thibaut Cornolti
-** Last update Tue Dec 20 14:51:08 2016 Thibaut Cornolti
+** Last update Wed Dec 21 13:52:24 2016 Thibaut Cornolti
 */
 
 #include "soko.h"
@@ -45,7 +45,7 @@ void		looser_anim(t_game *g)
   show_title(g);
   attron(A_BOLD);
   attron(COLOR_PAIR(1));
-  if ((fd = open("resourceslooser.txt", O_RDONLY)) == -1)
+  if ((fd = open("resources/looser.txt", O_RDONLY)) == -1)
     return ;
   i = LINES / 2 - 3;
   move(i, COLS / 2 - 39);
