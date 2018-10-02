@@ -29,5 +29,8 @@ _Map selector_
 ![](https://imgur.com/P2Eq8mr.png)
 _In a solo game_
 
+![](https://imgur.com/XUyIs8s.png)
+_Server selector_
+
 ![](https://imgur.com/lonlRjB.png)
 _In a multi game (not necessary the same computer)_
