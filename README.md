@@ -16,7 +16,7 @@ $> ./my_sokoban
 ## Requirement
 
 * [SFML Network](https://www.sfml-dev.org)
-* [FModex](https://www.fmod.com)
+* [FModex](https://www.fmod.com) (sounds)
 
 ## Screenshots
 
